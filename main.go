@@ -9,6 +9,8 @@ import (
 
 func main() {
 
+	gin.SetMode(gin.ReleaseMode)
+
 	r := gin.Default()
 
 	port := flag.Int("port", 8080, "Which port should the server listen to.")
