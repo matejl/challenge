@@ -6,7 +6,8 @@ This is a solution for Celtra Data Engineer Challenge, writen in Go.
 
 1. Install Go - https://golang.org/doc/install.
 2. Set environment variable `GOOGLE_APPLICATION_CREDENTIALS` to a JSON
-previously stored:
+previously stored to enable system-wide secure access to Google
+Cloud Platform:
 ```
 $ export GOOGLE_APPLICATION_CREDENTIALS=<path_to_google_app_credentials>.json
 ```
