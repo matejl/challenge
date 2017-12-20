@@ -14,7 +14,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS=<path_to_google_app_credentials>.json
 ```
 $ go get github.com/matejl/challenge
 $ go build github.com/matejl/challenge
-$ ./challenge
+$ ./challenge [-port=<port>]
 ```
 
 App should be up and running now.
@@ -43,4 +43,28 @@ $ cd $GOPATH/src/github.com/matejl/challenge/testdata
 ... configure values (constants) on top of main.go
 $ go build
 $ ./testdata
+```
+
+## Scaling
+
+Scaling can be performed using deployment of multiple instanes of API
+and using a load balancer (for example, nginx).
+
+Sample nginx configuration inside one of `/etc/nginx/sites-available/` files:
+```
+http {
+    upstream stat_api {
+        server server1.domain.com:<port>;
+        server server2.domain.com:<port>;
+        ...
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://stat_api;
+        }
+    }
+}
 ```
