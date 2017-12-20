@@ -59,7 +59,8 @@ func GetCampaignStats(campaignId int64, dimensions []string, metrics []string) (
 				LEFT JOIN dataset.user u ON u.ad_id = a.ad_id
 				LEFT JOIN dataset.impression i ON i.user_id = u.user_id
 				WHERE c.campaign_id = ` + strconv.FormatInt(campaignId, 10) + `
-				GROUP BY ` + strings.Join(groupBys, ",")
+				GROUP BY ` + strings.Join(groupBys, ",") + `
+				ORDER BY ` + strings.Join(groupBys, ",")
 
 	return getCampaignResults(sqlQuery, dimensions, metrics)
 
@@ -79,7 +80,8 @@ func GetCampaignsDateRangeStats(dateFrom time.Time, dateTo time.Time, dimensions
 				LEFT JOIN dataset.impression i ON i.user_id = u.user_id
 				WHERE DATE(i.datetime) >= '` + dateFrom.Format("2006-01-02") + `' AND
 					DATE(i.datetime) <= '` + dateTo.Format("2006-01-02") + `'
-				GROUP BY ` + strings.Join(groupBys, ",")
+				GROUP BY ` + strings.Join(groupBys, ",") + `
+				ORDER BY ` + strings.Join(groupBys, ",")
 
 	return getCampaignResults(sqlQuery, dimensions, metrics)
 
