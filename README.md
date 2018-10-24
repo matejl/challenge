@@ -1,6 +1,6 @@
-# Celtra Data Engineer Challenge solution
+# Data Engineer Challenge solution
 
-This is a solution for Celtra Data Engineer Challenge, writen in Go.
+This is a solution for Data Engineer Challenge, writen in Go.
 
 ## Building procedure
 
